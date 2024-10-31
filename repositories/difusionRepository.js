@@ -26,8 +26,11 @@ exports.crearDifusion = async (difusion) => {
     const { data, error } = await supabase
         .from('difusion')
         .insert([difusion])
+        .select('id_difusion');
+
     if (error) throw new Error(error.message);
-    return data;
+
+    return data[0].id_difusion;
 };
 
 exports.deleteDifusion = async (rut, idCampana) => {

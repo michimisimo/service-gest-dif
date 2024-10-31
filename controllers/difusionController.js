@@ -40,3 +40,13 @@ exports.deleteDifusion = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 }
+
+exports.getDestDifusion = async (req, res) => {
+    const { idCampana } = req.params;
+    try {
+        const data = await difusionService.getDestDifusion(idCampana);
+        res.status(200).json(data);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};

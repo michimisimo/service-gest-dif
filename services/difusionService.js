@@ -40,7 +40,10 @@ exports.crearDifusion = async (ruts, idCampana) => {
         const difusion = { "rut": rut, "id_campana": idCampana };
         try {
             const data = await difusionRepository.crearDifusion(difusion);
-            resultados.push(data);
+            if (data) {
+                crearEnvio(data)
+                resultados.push(data);
+            }
         } catch (error) {
             console.error('Error al crear difusión:', error);
         }
@@ -52,3 +55,18 @@ exports.deleteDifusion = async (rut, idCampana) => {
     const data = await difusionRepository.deleteDifusion(rut, idCampana);
     return data;
 };
+
+exports.getDestDifusion = async () => {
+    const data = await difusionRepository.getDetalleDifusion(idCampana);
+    return data;
+}
+
+async function crearEnvio(idDif) {
+    try {
+        const response = await axios.post('http://localhost:3002/createEnv/' + idDif);
+        return response.data;
+    } catch (error) {
+        console.error('error al crear envios desde difusion:', error);
+        throw error;
+    }
+}
