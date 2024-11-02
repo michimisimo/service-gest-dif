@@ -25,7 +25,7 @@ exports.getDetalleDifusion = async (idCampana) => {
 
 async function obtenerDestinatarios() {
     try {
-        const response = await axios.get('http://localhost:3000/getDest');
+        const response = await axios.get('http://service-gest-dest:3000/getDest');
         return response.data;
     } catch (error) {
         console.error('Error al obtener los destinatarios:', error);
@@ -63,7 +63,7 @@ exports.getDestDifusion = async () => {
 
 async function crearEnvio(idDif) {
     try {
-        const response = await axios.post('http://localhost:3002/createEnv/' + idDif);
+        const response = await axios.post('http://service-env-email:3002/createEnv/' + idDif);
         return response.data;
     } catch (error) {
         console.error('error al crear envios desde difusion:', error);
