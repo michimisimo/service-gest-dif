@@ -10,7 +10,7 @@ exports.getDifusion = async (req, res) => {
 };
 
 exports.getDetalleDifusion = async (req, res) => {
-    const { idCampana } = req.params;
+    const idCampana = req.params.idCampana;
     try {
         const data = await difusionService.getDetalleDifusion(idCampana);
         res.status(200).json(data);

@@ -7,6 +7,7 @@ exports.getDifusion = async () => {
     return data;
 };
 
+//Devuelve arreglo de tipo destinatario[] de una campaña
 exports.getDetalleDifusion = async (idCampana) => {
     try {
         const destinatarios = await obtenerDestinatarios();
@@ -56,7 +57,8 @@ exports.deleteDifusion = async (rut, idCampana) => {
     return data;
 };
 
-exports.getDestDifusion = async () => {
+//Devuelve arreglo de objetos de tipo difusion[] de una campaña (id_difusion, rut destinatario, id_campaña)
+exports.getDestDifusion = async (idCampana) => {
     const data = await difusionRepository.getDetalleDifusion(idCampana);
     return data;
 }

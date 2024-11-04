@@ -16,7 +16,7 @@ exports.getDifusion = async () => {
 exports.getDetalleDifusion = async (idCampana) => {
     const { data, error } = await supabase
         .from('difusion')
-        .select('rut')
+        .select('*')
         .eq('id_campana', idCampana)
     if (error) throw new Error(error.message);
     return data;
